@@ -15,10 +15,10 @@ app.get("/todos/:user", function(req,res){
   if (req.params.user == "Ron"){
     var todos = ["Teach Javascript.", "Go Home"];
     res.send(todos);
-    }
-    else{
-      res.sendStatus(404);
-    }
+  }
+  else{
+    res.sendStatus(404);
+  }
 })
 
 app.listen(1337);
