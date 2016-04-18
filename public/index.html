@@ -16,20 +16,7 @@
             </div>
             <div class="panel-body">
               <div ng-controller="todoController as todo">
-                <span ng-show="todo.list.length !==0">Items: {{todo.list.length}}</span>
-                <span ng-show="todo.list.length ==0">Nothing to do.</span>
-                <ol class="list-unstyled">
-                  <li ng-repeat="item in todo.list">
-                    <input ng-click = "finished = !finished; todo.finished(item)" type="checkbox">
-                      {{item}}
-                  </li>
-                </ol>
-              <div class="input-group">
-                <input class="form-control" type="text" ng-model="input">
-                 <span class="input-group-btn">
-                   <button class="btn btn-default" type="button" ng-click = "todo.add(input)">Add Task</button>
-                 </span>
-               </div>
+                <todo></todo>
               </div>
             </div>
           </div>
@@ -40,6 +27,8 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="app.js"></script>
+    <script src="home.controller.js"></script>
     <script src="add.directive.js"></script>
+    <script src="todo.controller.js"></script>
   </body>
 </html>
