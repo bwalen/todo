@@ -1,13 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <title>Angular</title>
   </head>
   <body ng-app="todo">
-    <div ng-controller="homeController as home">
-      {{home.message}}
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <div ng-controller="homeController as home">
+                {{home.message}} {{home.user.name}}
+              </div>
+            </div>
+            <div class="panel-body">
+              <div ng-controller="todoController as todo">
+                <span ng-show="todo.list.length !==0">Items: {{todo.list.length}}</span>
+                <span ng-show="todo.list.length ==0">Nothing to do.</span>
+                <ol class="list-unstyled">
+                  <li ng-repeat="item in todo.list">
+                    <input ng-click = "finished = !finished; todo.finished(item)" type="checkbox">
+                      {{item}}
+                  </li>
+                </ol>
+              <div class="input-group">
+                <input class="form-control" type="text" ng-model="input">
+                 <span class="input-group-btn">
+                   <button class="btn btn-default" type="button" ng-click = "todo.add(input)">Add Task</button>
+                 </span>
+               </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
