@@ -6,7 +6,6 @@ var myClient = mongo.MongoClient;
 var url = "mongodb://localhost:27017/test";
 
 app.use(bodyParser.json());
-
 app.use(express.static("./public"));
 
 app.get("/user", function(req, res){
@@ -18,15 +17,25 @@ app.get("/user", function(req, res){
 })
 
 app.get("/get", function(req,res){
-
   myClient.connect(url, function(error, database){
     if(!error){
       var todo = database.collection("todo");
       todo.find({name: "new"}).toArray(function(err, docs){
-        res.send(docs[0].list);
+        res.send(docs);
         database.close();
       });
     }
+  })
+})
+
+app.post("/post", function(req, res){
+  var todoArray = ["run", "jump"];
+  myClient.connect(url, function(error, database){
+    var todo = database.collection("todo");
+    todo.insert({name: "new", list: todoArray}, function(result, error){
+      res.sendStatus(200);
+      database.close();
+    });
   })
 })
 
@@ -44,4 +53,19 @@ app.put("/put", function(req, res){
     })
   })
 
-app.listen(1337);
+  app.delete("/delete", function(req, res){
+    var todoArray = req.body;
+    myClient.connect(url, function(error, database){
+      var todo = database.collection("todo");
+      todo.deleteOne({name: "new", list: todoArray}, function(error, result){
+        res.sendStatus(200);
+        database.close();
+      })
+    })
+  })
+
+if(!require.main.loaded){
+  var server = app.listen(1337);
+}
+
+module.exports = app;

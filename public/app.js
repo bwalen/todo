@@ -21,7 +21,7 @@ function todo($http){
   vm = this;
   var todo = $http.get("http://localhost:1337/get");
   todo.then(function(todo){
-    vm.list = todo.data;
+    vm.list = todo.data[0].list;
   })
   vm.finished = function(item){
     var position= vm.list.indexOf(item);
