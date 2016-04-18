@@ -9,15 +9,15 @@ var port = server.address().port;
 
 
 describe("Todos Route Testing", function(){
-  it("Get", function(done){
-    request("http://localhost:" + port + "/get", function(error, response, body){
+  it("Post", function(done){
+    request("http://localhost:" + port + "/post", function(error, response, body){
       if(!error && response){
         done();
       }
     })
   })
-  it("Post", function(done){
-    request("http://localhost:" + port + "/post", function(error, response, body){
+  it("Get", function(done){
+    request("http://localhost:" + port + "/get", function(error, response, body){
       if(!error && response){
         done();
       }

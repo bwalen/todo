@@ -29,7 +29,7 @@ app.get("/get", function(req,res){
 })
 
 app.post("/post", function(req, res){
-  var todoArray = req.body;
+  var todoArray = ["run", "jump"];
   myClient.connect(url, function(error, database){
     var todo = database.collection("todo");
     todo.insert({name: "new", list: todoArray}, function(result, error){
