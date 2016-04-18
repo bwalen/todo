@@ -6,7 +6,6 @@ var myClient = mongo.MongoClient;
 var url = "mongodb://localhost:27017/test";
 
 app.use(bodyParser.json());
-
 app.use(express.static("./public"));
 
 app.get("/user", function(req, res){
