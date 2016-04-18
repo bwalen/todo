@@ -21,7 +21,7 @@ app.get("/get", function(req,res){
     if(!error){
       var todo = database.collection("todo");
       todo.find({name: "new"}).toArray(function(err, docs){
-        res.send(docs[0].list);
+        res.send(docs);
         database.close();
       });
     }
