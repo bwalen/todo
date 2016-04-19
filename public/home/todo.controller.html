@@ -3,7 +3,7 @@
 <ol class="list-unstyled">
   <li ng-repeat="item in todo.list">
     <input ng-click = "finished = !finished; todo.finished(item)" type="checkbox">
-      {{item}}
+      {{item.name}}<span class="pull-right">Due: {{item.date|date:"short"}}</span>
   </li>
 </ol>
 <div class="input-group">

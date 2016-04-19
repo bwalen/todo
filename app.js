@@ -20,7 +20,7 @@ app.get("/get", function(req,res){
   myClient.connect(url, function(error, database){
     if(!error){
       var todo = database.collection("todo");
-      todo.find({name: "new"}).toArray(function(err, docs){
+      todo.find({}).toArray(function(err, docs){
         res.send(docs);
         database.close();
       });
@@ -29,10 +29,9 @@ app.get("/get", function(req,res){
 })
 
 app.post("/post", function(req, res){
-  var todoArray = ["run", "jump"];
   myClient.connect(url, function(error, database){
     var todo = database.collection("todo");
-    todo.insert({name: "new", list: todoArray}, function(result, error){
+    todo.insert(req.body, function(result, error){
       res.sendStatus(200);
       database.close();
     });
@@ -57,7 +56,7 @@ app.put("/put", function(req, res){
     var todoArray = req.body;
     myClient.connect(url, function(error, database){
       var todo = database.collection("todo");
-      todo.deleteOne({name: "new", list: todoArray}, function(error, result){
+      todo.deleteOne(req.body, function(error, result){
         res.sendStatus(200);
         database.close();
       })
