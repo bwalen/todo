@@ -7,25 +7,18 @@
   <body ng-app="todo">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-3">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <div ng-controller="homeController as home">
-                <greeting></greeting>
-              </div>
-            </div>
-            <div class="panel-body">
-              <div ng-controller="todoController as todo">
-                <todo></todo>
-              </div>
-            </div>
-          </div>
+        <div class="col-md-4">
+          <a href="/#/todo">todo</a>
+          <a href="/#/profile">profile</a>
+          <ng-view>
+          </ng-view>
         </div>
       </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-route.js"></script>
     <script src="app.js"></script>
     <script src="home.controller.js"></script>
     <script src="add.directive.js"></script>
