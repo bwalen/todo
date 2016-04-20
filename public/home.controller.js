@@ -1,9 +1,9 @@
 app.controller("homeController", home);
 
-app.$inject = ["$http"];
+app.$inject = ["userService"];
 
-function home($http) {
-  var user = $http.get("http://localhost:1337/user");
+function home(userService) {
+  user = userService.getUser();
   user.then(function(info){
     vm.user=info.data;
   })
