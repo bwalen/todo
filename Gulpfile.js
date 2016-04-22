@@ -20,8 +20,7 @@ gulp.task("firstTest", function(){
 })
 
 gulp.task("secondTest", function(){
-
-  gulp.src("casper.spec.js").pipe(casperJs());
+  return(gulp.src("casper.spec.js").pipe(casperJs()));
 })
 
 gulp.task("default", ["server","firstTest","killserver"]);
