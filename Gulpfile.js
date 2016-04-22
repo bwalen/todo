@@ -1,10 +1,10 @@
 var gulp = require("gulp");
 var nodemon = require("gulp-nodemon");
 var mocha = require('gulp-mocha');
-var exec = require('child_process').exec;
+//var exec = require('child_process').exec;
 var casperJs = require('gulp-casperjs');
-var app = require('./app.js');
-var child = exec('node app.js');
+//var app = require('./app.js');
+//var child = exec('node app.js');
 
 gulp.task("server", function(){
   console.log("Starting Server");
@@ -14,7 +14,7 @@ gulp.task("server", function(){
 gulp.task("killserver", ["secondTest"], function(){
   setTimeout(function(){
     console.log("Killing server");
-    child.kill();
+    process.exit(0);
   },10000);
 })
 
