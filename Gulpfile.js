@@ -15,7 +15,7 @@ gulp.task("killserver", ["secondTest"], function(){
   setTimeout(function(){
     console.log("Killing server");
     process.exit(0);
-  },10000);
+  },15000);
 })
 
 gulp.task("firstTest", function(){
