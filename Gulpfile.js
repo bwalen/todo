@@ -11,7 +11,7 @@ gulp.task("server", function(){
 
 })
 
-gulp.task("killserver", function(){
+gulp.task("killserver", ["secondTest"], function(){
   child.kill();
 })
 
@@ -24,4 +24,4 @@ gulp.task("secondTest", function(){
   gulp.src("casper.spec.js").pipe(casperJs());
 })
 
-gulp.task("default", ["server","firstTest","secondTest","killserver"]);
+gulp.task("default", ["server","firstTest","killserver"]);
