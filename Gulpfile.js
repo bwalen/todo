@@ -1,21 +1,18 @@
 var gulp = require("gulp");
 var nodemon = require("gulp-nodemon");
 var mocha = require('gulp-mocha');
-//var exec = require('child_process').exec;
+var exec = require('child_process').exec;
 var casperJs = require('gulp-casperjs');
-//var app = require('./app.js');
-//var child = exec('node app.js');
+var app = require('./app.js');
+var child = exec('node app.js');
 
 gulp.task("server", function(){
   console.log("Starting Server");
-
 })
 
 gulp.task("killserver", ["secondTest"], function(){
-  setTimeout(function(){
     console.log("Killing server");
-    process.exit(0);
-  },15000);
+    child.kill();
 })
 
 gulp.task("firstTest", function(){
@@ -23,7 +20,7 @@ gulp.task("firstTest", function(){
 })
 
 gulp.task("secondTest", function(){
-  gulp.src("casper.spec.js").pipe(casperJs());
+  return(gulp.src("casper.spec.js").pipe(casperJs()));
 })
 
 gulp.task("default", ["server","firstTest","killserver"]);

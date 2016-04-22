@@ -4,8 +4,8 @@ var assert = chai.assert;
 
 var app = require('./app.js');
 var RANDOMIZE = 0;
-var server = app.listen(1337);
-var port = 1337;//server.address().port;
+var server = app.listen(RANDOMIZE);
+var port = server.address().port;
 
 
 describe("Todos Route Testing", function(){
