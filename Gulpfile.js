@@ -12,7 +12,10 @@ gulp.task("server", function(){
 })
 
 gulp.task("killserver", ["secondTest"], function(){
-  child.kill();
+  setTimeout(function(){
+    console.log("Killing server");
+    child.kill();
+  },10000);
 })
 
 gulp.task("firstTest", function(){
@@ -20,7 +23,7 @@ gulp.task("firstTest", function(){
 })
 
 gulp.task("secondTest", function(){
-  return(gulp.src("casper.spec.js").pipe(casperJs()));
+  gulp.src("casper.spec.js").pipe(casperJs());
 })
 
 gulp.task("default", ["server","firstTest","killserver"]);
