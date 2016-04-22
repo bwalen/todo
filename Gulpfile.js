@@ -6,13 +6,9 @@ var casperJs = require('gulp-casperjs');
 var app = require('./app.js');
 var child = exec('node app.js');
 
-gulp.task("server", function(){
-  console.log("Starting Server");
-})
-
 gulp.task("killserver", ["secondTest"], function(){
-    console.log("Killing server");
-    child.kill();
+  child.kill("SIGINT");
+  process.exit(0);
 })
 
 gulp.task("firstTest", function(){
@@ -23,4 +19,4 @@ gulp.task("secondTest", function(){
   return(gulp.src("casper.spec.js").pipe(casperJs()));
 })
 
-gulp.task("default", ["server","firstTest","killserver"]);
+gulp.task("default", ["firstTest","killserver"]);
