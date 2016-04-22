@@ -1,8 +1,6 @@
-//var casper = require("casper").create();
-
 casper.test.begin("Testing Adding a todo", 2, function(test){
   casper.start("http://localhost:1337/#/todo");
-  casper.wait(15000, function(){
+  casper.wait(3000, function(){
     casper.then(function(){
       var initialSpans = casper.getElementsBounds("span").length;
       casper.sendKeys("#testing", "new item");
@@ -17,7 +15,6 @@ casper.test.begin("Testing Adding a todo", 2, function(test){
         return (endSpans < afterSpans);
       }, "Successfully finished a todo");
     });
-
   })
   casper.run(function(){
     test.done();
