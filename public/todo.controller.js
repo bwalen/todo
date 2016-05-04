@@ -24,8 +24,10 @@ function todo($http){
     var postChange = $http.delete("http://localhost:1337/delete", item);
   }
   vm.add = function(inputTodo){
-    var task = {name: inputTodo, date: Date.now()+172800000};
-    vm.list.push(task);
-    var postChange = $http.post("http://localhost:1337/post", task);
+    if(inputTodo){
+      var task = {name: inputTodo, date: Date.now()+172800000};
+      vm.list.push(task);
+      var postChange = $http.post("http://localhost:1337/post", task);
+    }
   }
 }
